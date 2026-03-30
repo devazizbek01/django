@@ -1,0 +1,33 @@
+{% load static %}
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Tahrirlash: {{ post.title }}</title>
+    <link rel="stylesheet" href="{% static 'css/style.css' %}">
+</head>
+<body>
+    <div class="container">
+        <!-- Orqaga qaytish -->
+        <a href="{% url 'post_detail' post.id %}" class="back-link">← Orqaga qaytish</a>
+
+        <!-- Forma kartasi -->
+        <div class="post-card form-card">
+            <h1 class="page-title">Postni Tahrirlash</h1>
+
+            <!-- Forma boshlanishi -->
+            <form method="POST">
+                {% csrf_token %}
+                
+                <!-- Forma maydonlari -->
+                <div class="form-group">
+                    {{ form.as_p }}
+                </div>
+
+                <!-- Yuborish tugmasi -->
+                <button type="submit" class="submit-btn">Saqlash</button>
+            </form>
+            <!-- Forma tugashi -->
+        </div>
+    </div>
+</body>
+</html>

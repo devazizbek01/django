@@ -1,0 +1,29 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="uz">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{% static 'style.css' %}">
+    <title>Yangilik qo'shish</title>
+</head>
+<body>
+    <div class="container">
+
+        <a href="{% url 'home' %}" class="back-link">← Barcha yangiliklar</a>
+
+        <div class="post-card form-card">
+            <h1>Yangilik Qo'shish</h1>
+
+            <form method="post">
+                {% csrf_token %}
+                <div class="form-group">
+                    {{ form.as_p }}
+                </div>
+                <button type="submit" class="submit-btn">Saqlash</button>
+            </form>
+        </div>
+
+    </div>
+</body>
+</html>

@@ -1,0 +1,35 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="uz">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{% static 'style.css' %}">
+    <title>Yangiliklar</title>
+</head>
+<body class="body-container">
+
+    <div class="video-bg-wrapper">
+        <video id="video-bg" autoplay muted loop playsinline preload="auto">
+            <source src="{% static 'video.webm' %}" type="video/webm">
+        </video>
+        <div class="video-overlay"></div>
+    </div>
+
+    <div class="header-section">
+        <h1 class="main-title">So'ngi <span>Yangiliklar</span></h1>
+        <a href="{% url 'create_post' %}" class="add-post-btn">+ Yangilik qo'shish</a>
+    </div>
+
+    <div class="posts-container">
+        {% for post in posts %}
+            <article class="post-card" loading="lazy">
+                <h2 class="post-title">{{ post.title }}</h2>
+                <span class="post-time">{{ post.time }}</span>
+                <a href="{% url 'post_detail' post.id %}" class="post-link">Batafsil o'qish →</a>
+            </article>
+        {% endfor %}
+    </div>
+
+</body>
+</html>
